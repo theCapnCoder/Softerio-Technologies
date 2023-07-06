@@ -20,7 +20,7 @@ import { Adb } from "@mui/icons-material";
 import { MobileMenu } from "./MobileMenu";
 
 export const TestNavBar = () => {
-  const [state, setState] = React.useState(false);
+  const [state, setState] = React.useState(true);
 
   const toggleDrawer = () => {
     console.log("toggle");
@@ -61,11 +61,7 @@ export const TestNavBar = () => {
                 backgroundColor: "#3980FF",
               }}
             >
-              {state ? (
-                <CloseIcon sx={{ width: 15.5, height: 15.5 }} />
-              ) : (
-                <MenuIcon sx={{ width: 28, height: 28 }} />
-              )}
+              <MenuIcon sx={{ width: 28, height: 28 }} />
             </IconButton>
           </Tooltip>
         </Toolbar>
@@ -88,7 +84,7 @@ export const TestNavBar = () => {
             }}
             onClose={toggleDrawer}
           >
-            <MobileMenu />
+            <MobileMenu onClose={toggleDrawer} />
           </Drawer>
         </Box>
 
