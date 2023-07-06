@@ -3,12 +3,18 @@ import { FC } from "react";
 
 type Props = {
   icon: React.ElementType;
-  onClick: () => void;
+  sizeIcon?: number;
+  onClick?: () => void;
 };
 
-export const BlueWrapperIcon: FC<Props> = ({ icon: Icon, onClick }) => {
+export const BlueWrapperIcon: FC<Props> = ({
+  icon: Icon,
+  sizeIcon,
+  onClick,
+}) => {
   return (
     <IconButton
+      disableRipple
       onClick={onClick}
       sx={{
         p: 0,
@@ -18,7 +24,12 @@ export const BlueWrapperIcon: FC<Props> = ({ icon: Icon, onClick }) => {
         backgroundColor: "#3980FF",
       }}
     >
-      <Icon sx={{ width: 15.5, height: 15.5 }} />
+      <Icon
+        sx={{
+          width: sizeIcon ? sizeIcon : 15.5,
+          height: sizeIcon ? sizeIcon : 15.5,
+        }}
+      />
     </IconButton>
   );
 };
