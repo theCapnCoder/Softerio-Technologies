@@ -7,6 +7,7 @@ import {
   ListItemText,
   Stack,
   Tooltip,
+  Typography,
 } from "@mui/material";
 import Box from "@mui/material/Box";
 import { menuData } from "./menuData";
@@ -21,6 +22,14 @@ import {
 import { FC } from "react";
 import React from "react";
 import { BlueWrapperIcon } from "../../components/BlueWrapperIcon";
+import styled from "@emotion/styled";
+
+const ContactTypography = styled(Typography)({
+  fontSize: 20,
+  color: "#4386FF",
+  fontWeight: 600,
+  lineHeight: "148.6%",
+});
 
 const styles = {
   box: {
@@ -55,16 +64,10 @@ export const MobileMenu: FC<Props> = ({ onClose }) => {
       >
         <LogoIcon sx={{ width: "221px", height: "56px" }} />
 
-        <Tooltip title="Open Menu">
-          <BlueWrapperIcon icon={CloseIcon} onClick={onClose} />
-        </Tooltip>
-          <WhatsappIcon />
-          <PhoneIcon />
-          <MailIcon />
-          <TelegramIcon />
+        <BlueWrapperIcon icon={CloseIcon} onClick={onClose} />
       </Stack>
 
-      <List disablePadding>
+      <List disablePadding sx={{ marginBottom: 3.75 }}>
         {menuData.map((text) => (
           <React.Fragment key={text}>
             <ListItem disablePadding>
@@ -76,6 +79,38 @@ export const MobileMenu: FC<Props> = ({ onClose }) => {
           </React.Fragment>
         ))}
       </List>
+
+      <Stack
+        mb={1}
+        direction={"row"}
+        gap={1.37}
+        justifyContent={"center"}
+        alignItems={"center"}
+      >
+        <PhoneIcon sx={{ width: 20, height: 20 }} />
+        <ContactTypography>8 (499) 348-82-16</ContactTypography>
+      </Stack>
+
+      <Stack
+        mb={4}
+        direction={"row"}
+        gap={1.37}
+        justifyContent={"center"}
+        alignItems={"center"}
+      >
+        <MailIcon sx={{ width: 20, height: 20 }} />
+        <ContactTypography>hello@softerio.ru</ContactTypography>
+      </Stack>
+
+      <Stack
+        direction={"row"}
+        justifyContent={"center"}
+        gap={1.37}
+        alignItems={"center"}
+      >
+        <BlueWrapperIcon icon={WhatsappIcon} sizeIcon={26} />
+        <TelegramIcon sx={{ width: 50, height: 50, cursor: "pointer" }} />
+      </Stack>
     </Box>
   );
 };
