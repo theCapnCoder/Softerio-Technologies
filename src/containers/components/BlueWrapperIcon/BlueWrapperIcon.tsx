@@ -4,12 +4,14 @@ import { FC } from "react";
 type Props = {
   icon: React.ElementType;
   sizeIcon?: number;
+  size?: string;
   onClick?: () => void;
 };
 
 export const BlueWrapperIcon: FC<Props> = ({
   icon: Icon,
   sizeIcon,
+  size, 
   onClick,
 }) => {
   return (
@@ -18,8 +20,8 @@ export const BlueWrapperIcon: FC<Props> = ({
       onClick={onClick}
       sx={{
         p: 0,
-        width: "50px",
-        height: "50px",
+        width: size ? size : "50px",
+        height: size ? size : "50px",
         borderRadius: 1.25,
         backgroundColor: "#3980FF",
       }}
