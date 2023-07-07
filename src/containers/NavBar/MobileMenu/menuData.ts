@@ -1,4 +1,4 @@
-export const menuData = [
+export const menuData: string[] = [
   "Главная",
   "О нас",
   "Наши услуги",
