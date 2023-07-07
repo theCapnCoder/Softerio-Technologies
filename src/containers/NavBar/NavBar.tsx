@@ -1,16 +1,9 @@
 import {
   AppBar,
-  Autocomplete,
-  AutocompleteRenderInputParams,
   Box,
-  Button,
   Container,
   Drawer,
   IconButton,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
   Stack,
   Toolbar,
   Tooltip,
@@ -18,19 +11,11 @@ import {
   styled,
 } from "@mui/material";
 import React from "react";
-import {
-  CloseIcon,
-  LogoIcon,
-  MenuIcon,
-  TelegramIcon,
-  WhatsappIcon,
-} from "../../assets/icons";
-import { Adb } from "@mui/icons-material";
+import { LogoIcon, MenuIcon } from "../../assets/icons";
 import { MobileMenu } from "./MobileMenu";
-import { BlueWrapperIcon } from "../components/BlueWrapperIcon";
 import { Contacts } from "./Contacts";
-import { OptionSelector } from "./OptionSelector";
 import { selectData } from "./selectData";
+import { OptionSelector } from "./OptionSelector";
 
 const NavTypography = styled(Typography)({
   cursor: "pointer",
@@ -46,7 +31,6 @@ export const NavBar = () => {
   const [state, setState] = React.useState(false);
 
   const toggleDrawer = () => {
-    console.log("toggle");
     setState((prev) => !prev);
   };
 
