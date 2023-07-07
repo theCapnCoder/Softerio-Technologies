@@ -1,10 +1,12 @@
 {
   "files": {
-    "main.js": "/Softerio-Technologies/static/js/main.57ceb11d.js",
+    "main.js": "/Softerio-Technologies/static/js/main.d68d5d57.js",
+    "static/media/Averta.woff": "/Softerio-Technologies/static/media/Averta.3fff750d1f0418045290.woff",
+    "static/media/Averta-Semibold.woff": "/Softerio-Technologies/static/media/Averta-Semibold.47f966f53a87818e3b87.woff",
     "index.html": "/Softerio-Technologies/index.html",
-    "main.57ceb11d.js.map": "/Softerio-Technologies/static/js/main.57ceb11d.js.map"
+    "main.d68d5d57.js.map": "/Softerio-Technologies/static/js/main.d68d5d57.js.map"
   },
   "entrypoints": [
-    "static/js/main.57ceb11d.js"
+    "static/js/main.d68d5d57.js"
   ]
 }
