@@ -1,179 +1,134 @@
-import * as React from "react";
-import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import Menu from "@mui/material/Menu";
-// import MenuIcon from "@mui/icons-material/Menu";
-import Container from "@mui/material/Container";
-import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import Tooltip from "@mui/material/Tooltip";
-import MenuItem from "@mui/material/MenuItem";
-import AdbIcon from "@mui/icons-material/Adb";
-import { CloseIcon, LogoIcon, MenuIcon } from "../../assets/icons";
+import {
+  AppBar,
+  Autocomplete,
+  AutocompleteRenderInputParams,
+  Box,
+  Button,
+  Container,
+  Drawer,
+  IconButton,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+  Stack,
+  Toolbar,
+  Tooltip,
+  Typography,
+  styled,
+} from "@mui/material";
+import React from "react";
+import {
+  CloseIcon,
+  LogoIcon,
+  MenuIcon,
+  TelegramIcon,
+  WhatsappIcon,
+} from "../../assets/icons";
+import { Adb } from "@mui/icons-material";
+import { MobileMenu } from "./MobileMenu";
+import { BlueWrapperIcon } from "../components/BlueWrapperIcon";
+import { Contacts } from "./Contacts";
+import { OptionSelector } from "./OptionSelector";
+import { selectData } from "./selectData";
 
-const pages = ["Products", "Pricing", "Blog"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+const NavTypography = styled(Typography)({
+  cursor: "pointer",
+  color: "#000",
+  fontSize: 16,
+  lineHeight: "148.6%",
+  "&:hover": {
+    color: "#4386FF",
+  },
+});
 
 export const NavBar = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
-    null
-  );
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
-    null
-  );
+  const [state, setState] = React.useState(false);
 
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
+  const toggleDrawer = () => {
+    console.log("toggle");
+    setState((prev) => !prev);
   };
 
   return (
-    <AppBar position="static" elevation={0} sx={{ pt: 2.5, backgroundColor: "#FEF4FF" }}>
-      <Container>
-        <Toolbar disableGutters sx={{ justifyContent: {xs: 'space-between', md: 'center'}}}>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
+    <AppBar color="transparent" elevation={0} position="static">
+      <Container
+        sx={{
+          "@media (min-width:360px)": {
+            padding: "18px 0 22px",
+            maxWidth: "1288px",
+          },
+        }}
+        maxWidth="xl"
+      >
+        <Toolbar
+          variant="regular"
+          disableGutters
+          sx={{ px: 2, justifyContent: "space-between" }}
+        >
+          <LogoIcon
             sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
+              width: "221px",
+              height: "56px",
+              "@media (min-width:1793px)": { width: "285px", height: "72px" },
             }}
-          >
-            LOGO
-          </Typography>
+          />
 
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "none" } }}>
-            {/* <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton> */}
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
+          <Stack
+            component={"nav"}
+            direction={"row"}
+            alignItems={"center"}
+            justifyContent={"space-between"}
+            flexGrow={1}
+            pl={6.38}
+            pr={4}
+            sx={{ display: { md: "flex", xs: "none" } }}
+          >
+            <NavTypography>Главная</NavTypography>
+            <NavTypography>О нас</NavTypography>
+            <NavTypography>Наши услуги</NavTypography>
+            <NavTypography>Этапы работы</NavTypography>
+            <NavTypography>Стоимость</NavTypography>
+            <OptionSelector data={selectData} />
+          </Stack>
+
+          <Tooltip title="Open Menu">
+            <IconButton
+              onClick={toggleDrawer}
               sx={{
-                display: { xs: "block", md: "none" },
+                display: { xs: "flex", md: "none" },
+                p: 0,
+                width: "50px",
+                height: "50px",
+                borderRadius: 1.25,
+                backgroundColor: "#3980FF",
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
-          {/* <AdbIcon sx={{ display: { xs: "flex", md: "none" }, mr: 1 }} /> */}
-          {/* <Typography
-            variant="h5"
-            noWrap
-            component="a"
-            href=""
-            sx={{
-              mr: 2,
-              display: { xs: "flex", md: "none" },
-              flexGrow: 1,
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            LOGO
-          </Typography> */}
-          <LogoIcon sx={{ width: 221, height: 56 }} />
-          {/* <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page}
-              </Button>
-            ))}
-          </Box> */}
+              <MenuIcon sx={{ width: 28, height: 28 }} />
+            </IconButton>
+          </Tooltip>
 
-          <Box sx={{ flexGrow: 0 }}>
-            <Tooltip title="Open Menu">
-              <IconButton
-                onClick={handleOpenUserMenu}
-                sx={{
-                  p: 0,
-                  width: "50px",
-                  height: "50px",
-                  borderRadius: 1.25,
-                  backgroundColor: "#3980FF",
-                }}
-              >
-                {anchorElUser ? (
-                  <CloseIcon sx={{ width: 15.5, height: 15.5 }} />
-                ) : (
-                  <MenuIcon sx={{ width: 28, height: 28 }} />
-                )}
-              </IconButton>
-            </Tooltip>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
+          <Contacts />
         </Toolbar>
+
+        <Box>
+          <Drawer
+            anchor="right"
+            elevation={8}
+            open={state}
+            sx={{ maxWidth: "100px" }}
+            PaperProps={{
+              sx: {
+                maxWidth: 360,
+                width: "100%",
+                backgroundColor: "#FEF4FF",
+              },
+            }}
+            onClose={toggleDrawer}
+          >
+            <MobileMenu onClose={toggleDrawer} />
+          </Drawer>
+        </Box>
       </Container>
     </AppBar>
   );
