@@ -1,5 +1,5 @@
 import { Box, Container, Typography, ContainerProps } from "@mui/material";
-import { NavBar, TestNavBar } from "./containers/NavBar";
+import { NavBar } from "./containers/NavBar";
 
 const containerStyle: ContainerProps["sx"] = {
   backgroundColor: "#FEF4FF",
@@ -7,9 +7,8 @@ const containerStyle: ContainerProps["sx"] = {
 
 function App() {
   return (
-    <Container disableGutters sx={containerStyle} maxWidth="xl" >
-      {/* <NavBar /> */}
-      <TestNavBar />
+    <Container disableGutters sx={containerStyle} maxWidth="xl">
+      <NavBar />
       {/* <Typography variant="h1" component={"h1"}>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam,
       </Typography>
