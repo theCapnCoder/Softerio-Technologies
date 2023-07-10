@@ -1,6 +1,6 @@
 import { Box, Stack, Typography, styled } from "@mui/material";
-import { BlueWrapperIcon } from "../../components/BlueWrapperIcon";
 import { TelegramIcon, WhatsappIcon } from "../../../assets/icons";
+import { BlueWrapperIcon } from "../../../components/BlueWrapperIcon";
 
 const PhoneTypography = styled(Typography)({
   color: "#4386FF",
