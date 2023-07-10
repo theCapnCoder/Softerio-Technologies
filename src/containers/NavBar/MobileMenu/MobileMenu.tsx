@@ -19,8 +19,8 @@ import {
 } from "../../../assets/icons";
 import { FC } from "react";
 import React from "react";
-import { BlueWrapperIcon } from "../../components/BlueWrapperIcon";
 import styled from "@emotion/styled";
+import { BlueWrapperIcon } from "../../../components/BlueWrapperIcon";
 
 const ContactTypography = styled(Typography)({
   fontSize: 20,
