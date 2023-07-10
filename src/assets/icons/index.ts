@@ -6,3 +6,5 @@ export { WhatsappIcon } from './WhatsappIcon';
 export { MailIcon } from './MailIcon';
 export { TelegramIcon } from './TelegramIcon';
 export { DropDown } from './DropDown';
+export { Rocket } from './Rocket';
+export { Cup } from './Cup';
